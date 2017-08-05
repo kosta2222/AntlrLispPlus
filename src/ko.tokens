@@ -1,0 +1,15 @@
+DIV=5
+MULT=4
+LPAR=6
+OPER_OR_FUNC=2
+RPAR=7
+WS=9
+INT=1
+COMMENT=8
+MINUS=3
+'-'=3
+'+'=2
+'*'=4
+')'=7
+'('=6
+'/'=5
