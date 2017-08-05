@@ -34,4 +34,12 @@ public class koBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements koV
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitInt(@NotNull koParser.IntContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitBraces(@NotNull koParser.BracesContext ctx) { return visitChildren(ctx); }
 }

@@ -49,7 +49,6 @@ public class koParser extends Parser {
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
-		public TerminalNode EOF() { return getToken(koParser.EOF, 0); }
 		public InputContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -68,7 +67,6 @@ public class koParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(4); expr(0);
-			setState(5); match(EOF);
 			}
 		}
 		catch (RecognitionException re) {
@@ -117,6 +115,17 @@ public class koParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	public static class BracesContext extends ExprContext {
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public BracesContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof koVisitor ) return ((koVisitor<? extends T>)visitor).visitBraces(this);
+			else return visitor.visitChildren(this);
+		}
+	}
 
 	public final ExprContext expr() throws RecognitionException {
 		return expr(0);
@@ -133,17 +142,34 @@ public class koParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			{
-			_localctx = new IntContext(_localctx);
-			_ctx = _localctx;
-			_prevctx = _localctx;
+			setState(12);
+			switch (_input.LA(1)) {
+			case INT:
+				{
+				_localctx = new IntContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 
-			setState(8); match(INT);
+				setState(7); match(INT);
+				}
+				break;
+			case LPAR:
+				{
+				_localctx = new BracesContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(8); match(LPAR);
+				setState(9); expr(0);
+				setState(10); match(RPAR);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(16);
+			setState(20);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
 			while ( _alt!=2 && _alt!=ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
@@ -152,16 +178,16 @@ public class koParser extends Parser {
 					{
 					_localctx = new OperContext(new ExprContext(_parentctx, _parentState));
 					pushNewRecursionContext(_localctx, _startState, RULE_expr);
-					setState(10);
-					if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-					setState(11); expr(0);
-					setState(12); match(OPER_OR_FUNC);
+					setState(14);
+					if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+					setState(15); expr(0);
+					setState(16); match(OPER_OR_FUNC);
 					}
 					} 
 				}
-				setState(18);
+				setState(22);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
 			}
 			}
 		}
@@ -184,18 +210,20 @@ public class koParser extends Parser {
 	}
 	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0: return precpred(_ctx, 2);
+		case 0: return precpred(_ctx, 3);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\13\26\4\2\t\2\4\3"+
-		"\t\3\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\7\3\21\n\3\f\3\16\3\24\13"+
-		"\3\3\3\2\3\4\4\2\4\2\2\24\2\6\3\2\2\2\4\t\3\2\2\2\6\7\5\4\3\2\7\b\7\2"+
-		"\2\3\b\3\3\2\2\2\t\n\b\3\1\2\n\13\7\3\2\2\13\22\3\2\2\2\f\r\f\4\2\2\r"+
-		"\16\5\4\3\2\16\17\7\4\2\2\17\21\3\2\2\2\20\f\3\2\2\2\21\24\3\2\2\2\22"+
-		"\20\3\2\2\2\22\23\3\2\2\2\23\5\3\2\2\2\24\22\3\2\2\2\3\22";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\13\32\4\2\t\2\4\3"+
+		"\t\3\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\5\3\17\n\3\3\3\3\3\3\3\3\3\7\3\25"+
+		"\n\3\f\3\16\3\30\13\3\3\3\2\3\4\4\2\4\2\2\31\2\6\3\2\2\2\4\16\3\2\2\2"+
+		"\6\7\5\4\3\2\7\3\3\2\2\2\b\t\b\3\1\2\t\17\7\3\2\2\n\13\7\b\2\2\13\f\5"+
+		"\4\3\2\f\r\7\t\2\2\r\17\3\2\2\2\16\b\3\2\2\2\16\n\3\2\2\2\17\26\3\2\2"+
+		"\2\20\21\f\5\2\2\21\22\5\4\3\2\22\23\7\4\2\2\23\25\3\2\2\2\24\20\3\2\2"+
+		"\2\25\30\3\2\2\2\26\24\3\2\2\2\26\27\3\2\2\2\27\5\3\2\2\2\30\26\3\2\2"+
+		"\2\4\16\26";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

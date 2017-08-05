@@ -30,4 +30,11 @@ public interface koVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitInt(@NotNull koParser.IntContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link koParser#braces}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBraces(@NotNull koParser.BracesContext ctx);
 }

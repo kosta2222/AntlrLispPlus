@@ -30,7 +30,7 @@ public class koVistorImpl extends koBaseVisitor<Object>{
         System.out.print("( ");
         int left=(int)visit(ctx.expr(0));
         int right=(int)visit(ctx.expr(1));
-        System.out.print("+) ");
+        System.out.print("+)=");
       //. return left+right;
       //   System.out.println(""+ctx.expr(0));<--[2]
 return left+right;
@@ -41,11 +41,4 @@ return left+right;
         System.out.print(ctx.INT().getText() + " ");
         return Integer.parseInt(ctx.INT().getText());
     }
-
-   
-
-
-
-    
-    
 }
