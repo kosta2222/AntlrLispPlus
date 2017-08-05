@@ -3,13 +3,10 @@ options {
 language=Java;
 }
 
-input
-        : expr EOF
-        ;
-
 expr
         : expr  expr OPER_OR_FUNC   # oper
         | INT                     # int
+	| '(' expr ')'             #braces   
 
         ;
 

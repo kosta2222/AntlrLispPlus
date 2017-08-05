@@ -21,9 +21,9 @@ public class koParser extends Parser {
 		"WS"
 	};
 	public static final int
-		RULE_input = 0, RULE_expr = 1;
+		RULE_expr = 0;
 	public static final String[] ruleNames = {
-		"input", "expr"
+		"expr"
 	};
 
 	@Override
@@ -45,41 +45,6 @@ public class koParser extends Parser {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
-	public static class InputContext extends ParserRuleContext {
-		public ExprContext expr() {
-			return getRuleContext(ExprContext.class,0);
-		}
-		public InputContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_input; }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof koVisitor ) return ((koVisitor<? extends T>)visitor).visitInput(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final InputContext input() throws RecognitionException {
-		InputContext _localctx = new InputContext(_ctx, getState());
-		enterRule(_localctx, 0, RULE_input);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(4); expr(0);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
 	public static class ExprContext extends ParserRuleContext {
 		public ExprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -136,13 +101,13 @@ public class koParser extends Parser {
 		int _parentState = getState();
 		ExprContext _localctx = new ExprContext(_ctx, _parentState);
 		ExprContext _prevctx = _localctx;
-		int _startState = 2;
-		enterRecursionRule(_localctx, 2, RULE_expr, _p);
+		int _startState = 0;
+		enterRecursionRule(_localctx, 0, RULE_expr, _p);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(12);
+			setState(8);
 			switch (_input.LA(1)) {
 			case INT:
 				{
@@ -150,7 +115,7 @@ public class koParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(7); match(INT);
+				setState(3); match(INT);
 				}
 				break;
 			case LPAR:
@@ -158,16 +123,16 @@ public class koParser extends Parser {
 				_localctx = new BracesContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(8); match(LPAR);
-				setState(9); expr(0);
-				setState(10); match(RPAR);
+				setState(4); match(LPAR);
+				setState(5); expr(0);
+				setState(6); match(RPAR);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(20);
+			setState(16);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
 			while ( _alt!=2 && _alt!=ATN.INVALID_ALT_NUMBER ) {
@@ -178,14 +143,14 @@ public class koParser extends Parser {
 					{
 					_localctx = new OperContext(new ExprContext(_parentctx, _parentState));
 					pushNewRecursionContext(_localctx, _startState, RULE_expr);
-					setState(14);
+					setState(10);
 					if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-					setState(15); expr(0);
-					setState(16); match(OPER_OR_FUNC);
+					setState(11); expr(0);
+					setState(12); match(OPER_OR_FUNC);
 					}
 					} 
 				}
-				setState(22);
+				setState(18);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
 			}
@@ -204,7 +169,7 @@ public class koParser extends Parser {
 
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 1: return expr_sempred((ExprContext)_localctx, predIndex);
+		case 0: return expr_sempred((ExprContext)_localctx, predIndex);
 		}
 		return true;
 	}
@@ -216,14 +181,13 @@ public class koParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\13\32\4\2\t\2\4\3"+
-		"\t\3\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\5\3\17\n\3\3\3\3\3\3\3\3\3\7\3\25"+
-		"\n\3\f\3\16\3\30\13\3\3\3\2\3\4\4\2\4\2\2\31\2\6\3\2\2\2\4\16\3\2\2\2"+
-		"\6\7\5\4\3\2\7\3\3\2\2\2\b\t\b\3\1\2\t\17\7\3\2\2\n\13\7\b\2\2\13\f\5"+
-		"\4\3\2\f\r\7\t\2\2\r\17\3\2\2\2\16\b\3\2\2\2\16\n\3\2\2\2\17\26\3\2\2"+
-		"\2\20\21\f\5\2\2\21\22\5\4\3\2\22\23\7\4\2\2\23\25\3\2\2\2\24\20\3\2\2"+
-		"\2\25\30\3\2\2\2\26\24\3\2\2\2\26\27\3\2\2\2\27\5\3\2\2\2\30\26\3\2\2"+
-		"\2\4\16\26";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\13\26\4\2\t\2\3\2"+
+		"\3\2\3\2\3\2\3\2\3\2\5\2\13\n\2\3\2\3\2\3\2\3\2\7\2\21\n\2\f\2\16\2\24"+
+		"\13\2\3\2\2\3\2\3\2\2\2\26\2\n\3\2\2\2\4\5\b\2\1\2\5\13\7\3\2\2\6\7\7"+
+		"\b\2\2\7\b\5\2\2\2\b\t\7\t\2\2\t\13\3\2\2\2\n\4\3\2\2\2\n\6\3\2\2\2\13"+
+		"\22\3\2\2\2\f\r\f\5\2\2\r\16\5\2\2\2\16\17\7\4\2\2\17\21\3\2\2\2\20\f"+
+		"\3\2\2\2\21\24\3\2\2\2\22\20\3\2\2\2\22\23\3\2\2\2\23\3\3\2\2\2\24\22"+
+		"\3\2\2\2\4\n\22";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

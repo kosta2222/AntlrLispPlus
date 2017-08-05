@@ -11,13 +11,6 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface koVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link koParser#input}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInput(@NotNull koParser.InputContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link koParser#oper}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

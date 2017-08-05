@@ -25,20 +25,28 @@ public class koVistorImpl extends koBaseVisitor<Integer>{
 //    public Object visitInt(koParser.IntContext ctx) {
 //        return super.visitInt(ctx); //To change body of generated methods, choose Tools | Templates.
 //    }
-     @Override
+    
+    
+
+    @Override
     public Integer visitOper(koParser.OperContext ctx) {
-        System.out.print("( ");
+         System.out.print("( ");
         int left=(int)visit(ctx.expr(0));
         int right=(int)visit(ctx.expr(1));
-        System.out.print("+)=");
-      //. return left+right;
-      //   System.out.println(""+ctx.expr(0));<--[2]
+        System.out.print(left + " ");
+        System.out.print(right);
+         System.out.print("+)=");
+        //. return left+right;
+        int res=left + right;
+       // System.out.print(String.valueOf(res));
+         
 return left+right;
+//return 0;
     }
 
     @Override
     public Integer visitInt(koParser.IntContext ctx) {
-        System.out.print(ctx.INT().getText() + " ");
+      //  System.out.print(ctx.INT().getText() + " ");
         return Integer.parseInt(ctx.INT().getText());
     }
 

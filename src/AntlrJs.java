@@ -1,5 +1,6 @@
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -28,10 +29,9 @@ public class AntlrJs {
         // TODO code application logic here
 		
 		
-		//InputStream r= new InputStreamReader(is,"cp1251");
-		//BufferedReader br=new BufferedReader(is);
+		
 		String s;
-		//while(!(s=br.readLine()).equals("q")){
+		//FileReader r=new FileReader("d:/lisp.txt");
                 s=new BufferedReader(new InputStreamReader(System.in)).readLine();
                org.antlr.v4.runtime.CharStream  input = new org.antlr.v4.runtime.ANTLRInputStream(s);
 // create a lexer that feeds off of input CharStream
