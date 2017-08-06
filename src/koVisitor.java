@@ -18,6 +18,13 @@ public interface koVisitor<T> extends ParseTreeVisitor<T> {
 	T visitOper(@NotNull koParser.OperContext ctx);
 
 	/**
+	 * Visit a parse tree produced by {@link koParser#prog}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProg(@NotNull koParser.ProgContext ctx);
+
+	/**
 	 * Visit a parse tree produced by {@link koParser#int}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

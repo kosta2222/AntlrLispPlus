@@ -42,7 +42,7 @@ public class AntlrJs {
 
                 CommonTokenStream tokens = new CommonTokenStream(lexer);
                 koParser parser = new koParser(tokens);
-                ParseTree tree = parser.expr(); // begin parsing at // rule
+                ParseTree tree = parser.prog(); // begin parsing at // rule
                 //
                 koVistorImpl visitor = new koVistorImpl();
                 //System.out.println(tree.toStringTree(parser));

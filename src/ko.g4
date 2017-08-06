@@ -2,12 +2,11 @@ grammar ko;
 options {
 language=Java;
 }
-
+prog: expr ';' | '#' COMMENT | EOF;
 expr
         : expr  expr OPER_OR_FUNC   # oper
         | INT                     # int
 	| '(' expr ')'             #braces   
-
         ;
 
 INT     : [0-9]+;
@@ -19,5 +18,8 @@ MULT    : '*';
 DIV     : '/';
 LPAR    : '(';
 RPAR    : ')';
-COMMENT: '//' [\\w ]+ ->skip;
+
+CHAR : ~[\ \r\n];
+
+COMMENT:  (CHAR)* ->skip;
 WS      : [ \t\r\n]+ -> skip;
